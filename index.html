@@ -3,9 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="jquery-linenumbers.js"></script>
+	<script>$('document').ready(function(){
+		$('#line_numbers').linenumbers({col_width:'75px'});
+	})</script>
+  <title>Compiladores</title>
 </head>
 <body>
-  
+  <div class="jumbotron text-center">
+    <h1>Compiladores</h1>
+    <p>
+      Um <strong>compilador</strong> é um programa de computador (ou um grupo de programas) que, a partir de um código fonte escrito em uma linguagem compilada, </p>
+      <p>cria um programa semanticamente equivalente, porém escrito em outra linguagem, código objeto.    </p>
+  </div>
+  <div class="container p-3 my-3 border">
+    <div class="card bg-light text-dark">
+      <div class="card-body">
+        <h5 class="card-title">Linguagem</h5>
+        <select class="form-control">
+          <option>C</option>
+          <option>Java</option>
+          <option>Pyton</option>
+          <option>JavaScript</option>
+        </select>
+        <br>
+        <form name="form1">
+          <h5 class="card-title">Codigo</h5>
+          <textarea id="line_numbers" class="form-control" rows="20">This is some example text.
+            Some line are long, and some lines are short, just line real text.
+            It's in a standard textarea.
+            Nothing special about this, not even any fancy CSS.
+            But havent you ever wanted to have a textarea with fancy line numbers?
+            Problem? Solved.</textarea>
+          <br>
+          <button type="button" class="btn btn-primary btn-block" onclick="exercicio1()">Compilar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="text"></div>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
