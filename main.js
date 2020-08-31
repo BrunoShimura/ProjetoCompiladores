@@ -1,18 +1,27 @@
 function compilar(cod){
-  var a = cod.split('\n');
-  for(var i = 0, len = a.length; i < len; ++i) {
-    console.log(a[i]);
+  var linha = cod.split('\n'); 
+  var cont = 1;
+  for(var i = 0, len = linha.length; i < len; ++i) {
+    percorre(linha[i],cont);
+    cont+=1;
   }
-  percorre();
 }
-function percorre(){
-  var a = d3.csv("data/simbolos.csv").then(function(data) {
-      var a = data[0];
-      
-      console.log(a.classificacao);
-      bd(a.simbolo);
+
+function percorre(linha,num){
+  d3.csv("data/simbolos.csv").then(function(data) {
+      var palavra = linha.split(' ');
+      for(var i = 0, len = palavra.length; i < len; ++i) {
+        for(var j = 0, a = data.length; j < a; ++j) {
+          if(palavra[i]==data[j].token){
+            console.log(palavra[i]);
+            console.log(data[j].simbolo);
+          }else{
+            var caracter = palavra[i].split('');
+            if (caracter[i]==data[j].token){
+
+            }
+          }
+        }
+      }
   });
-}
-function bd(a){
-  console.log(a);
 }

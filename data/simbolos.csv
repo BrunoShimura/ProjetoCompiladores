@@ -35,18 +35,23 @@ z,Letra
 7,Dígito
 8,Dígito
 9,Dígito
-.,Símbolo Especiail
-;,Símbolo Especiail
-",",Símbolo Especiail
-(,Símbolo Especiail
-),Símbolo Especiail
-:,Símbolo Especiail
-<,Símbolo Especiail
->,Símbolo Especiail
-+,Símbolo Especiail
--,Símbolo Especiail
-*,Símbolo Especiail
-%,Símbolo Especiail
+.,Símbolo Especial
+;,Símbolo Especial
+",",Símbolo Especial
+(,Símbolo Especial
+),Símbolo Especial
+{,Símbolo Especial
+},Símbolo Especial
+[,Símbolo Especial
+],Símbolo Especial
+:,Símbolo Especial
+=,Símbolo Especial
+<,Símbolo Especial
+>,Símbolo Especial
++,Símbolo Especial
+-,Símbolo Especial
+*,Símbolo Especial
+%,Símbolo Especial
 ++,Símbolo Composto
 --,Símbolo Composto
 >=,Símbolo Composto
@@ -88,3 +93,5 @@ unsigned,Palavra Reservada
 void,Palavra Reservada
 volatile,Palavra Reservada
 while,Palavra Reservada
+printf,Palavra Reservada
+main,Palavra Reservada
