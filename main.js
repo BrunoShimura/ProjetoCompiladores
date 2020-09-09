@@ -1,32 +1,39 @@
-var contTabela = 1
+var cont = 0
+var teste = []
 
-function compilar(cod){
+async function compilar(cod){
   var linha = cod.split('\n'); 
-  var cont = 1;
+  var cont2 = 1;
+ 
   for(var i = 0, len = linha.length; i < len; ++i) {
-    percorre(linha[i],cont);
-    cont+=1;
+    percorre(linha[i],cont2);
+    cont2+=1;
   }
+  
+  await mostraTabela(teste)
+  
 }
 
-function percorre(linha,num){
+async function percorre(linha,num){
   d3.csv("data/simbolos.csv").then(function(data) {
       var palavra = linha.split(' ');
-      
+    
       for(var i = 0, len = palavra.length; i < len; ++i) {
         for(var j = 0, a = data.length; j < a; ++j) {
           if(palavra[i]==data[j].token){
-            mostraTabela(num,palavra[i],data[j].simbolo)
+            teste[cont] = [num,palavra[i],data[j].simbolo]
+            cont+=1
           }
         }
       }
   });
 }
 
-function mostraTabela(num,palavra,simbolo){
+function mostraTabela(tokens){
+  var text = ''
+  for (var i=0 ; i< tokens.length; i++){
+    text+= '<tr><td>'+tokens[i][0]+'</td><td>'+tokens[i][1]+'</td><td>'+tokens[i][2]+'</td></tr>'
+  }
 
-  var text = '<tr><td>ola</td><td>ola</td><td>ola</td></tr><div id="tabela2"></div>'
-  document.getElementById("tabela"+contTabela).innerHTML = text;
-  console.log(contTabela)
-  contTabela+=1
+  document.getElementById("tabela1").innerHTML = text;
 }
