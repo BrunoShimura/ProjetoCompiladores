@@ -95,3 +95,5 @@ volatile,Palavra Reservada
 while,Palavra Reservada
 printf,Palavra Reservada
 main,Palavra Reservada
+id,Palavra Reservada
+num,Palavra Reservada
