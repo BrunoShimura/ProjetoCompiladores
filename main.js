@@ -1,6 +1,7 @@
 var cont = 0
 var cadeia = []
 var pilha = ['$','E']
+var vetorCadeia = []
 //a,b,c,d,e,f,g,h,i,j
 
 function compilar(cod){
@@ -55,7 +56,7 @@ function reconhecer(vetorCadeia){
         matriz[i][j] = 0;
       }
     }
-    
+  
     for(var j=0;j<data.length;j++){
       matriz[j] = [];
     }
@@ -72,27 +73,72 @@ function reconhecer(vetorCadeia){
       matriz[j][3] = data[j].d;
     }
     for(var j=0;j<data.length;j++){
-      matriz[j][4] = data[j].i;
+      matriz[j][4] = data[j].e;
     }
     for(var j=0;j<data.length;j++){
-      matriz[j][5] = data[j].j;
+      matriz[j][5] = data[j].f;
+    }
+    for(var j=0;j<data.length;j++){
+      matriz[j][6] = data[j].g;
+    }
+    for(var j=0;j<data.length;j++){
+      matriz[j][7] = data[j].h;
+    }
+    for(var j=0;j<data.length;j++){
+      matriz[j][8] = data[j].i;
+    }
+    for(var j=0;j<data.length;j++){
+      matriz[j][9] = data[j].j;
     }
     
-    var vetorCadeia = []
+    
     for(var i=0;i<cadeia.length;i++){
       vetorCadeia[i] = cadeia[i][1]
     }
-  
     
-    console.log(pilha)
-    console.log(vetorCadeia)
-    console.log(matriz)
-    var teste = pilha.length
+    var cont = 0
     var tabela = []
-    for(var i=0;i<10;i++){
-      tabela[i] = [pilha,vetorCadeia,matriz]
+
+    for(var i=0;i<5;i++){
+      
+
+      //procura pilha e cadeia
+      for(var j=0;j<6;j++){
+        if(pilha[pilha.length-1]==matriz[j][0])
+          var y = j
+      }
+      for(var j=0;j<10;j++){
+        if(vetorCadeia[cont]==matriz[0][j])
+          var k = j
+      }
+      //vetor com as informações
+      tabela[i] = [pilha.join(),vetorCadeia.join(),matriz[y][k]]
+      
+      //divide a regra matriz encontrada
+      var regra = matriz[y][k].split(' ')
+      
+      //se regra igual a cadeia tida da pilha 
+      if(regra[2]==vetorCadeia[cont]){
+        pilha.pop();
+        pilha.push(regra[2])
+        vetorCadeia.shift();
+        cont+=1
+      }else{
+        // se não divide a regra e coloca na pilha
+        pilha.pop();
+        regra = regra[2].split('')
+        regra = regra.reverse()
+        console.log(regra)
+        for(var j=0;j<regra.length;j++){
+          pilha.push(regra[j])
+        }
+      }
+      
     }
-    console.log(pilha[pilha.length-1])
+
+    
+    
+    
     mostraTabela2(tabela)
   });
 }
