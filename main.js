@@ -1,7 +1,6 @@
 var cont = 0
 var cadeia = []
 var pilha = ['$','E']
-var vetorCadeia = []
 //a,b,c,d,e,f,g,h,i,j
 
 function compilar(cod){
@@ -91,7 +90,7 @@ function reconhecer(vetorCadeia){
       matriz[j][9] = data[j].j;
     }
     
-    
+    var vetorCadeia = []
     for(var i=0;i<cadeia.length;i++){
       vetorCadeia[i] = cadeia[i][1]
     }
@@ -118,27 +117,27 @@ function reconhecer(vetorCadeia){
       var regra = matriz[y][k].split(' ')
       
       //se regra igual a cadeia tida da pilha 
-      if(regra[2]==vetorCadeia[cont]){
+      if(pilha[parseInt(pilha.length)-1]==vetorCadeia[cont]){
+        tabela[i] = [pilha.join(),vetorCadeia.join(),'--------']
         pilha.pop();
-        pilha.push(regra[2])
         vetorCadeia.shift();
         cont+=1
       }else{
         // se não divide a regra e coloca na pilha
-        pilha.pop();
-        regra = regra[2].split('')
-        regra = regra.reverse()
-        console.log(regra)
-        for(var j=0;j<regra.length;j++){
-          pilha.push(regra[j])
+        if(teste==vetorCadeia[cont]){
+          pilha.pop()                       //<========        //problema com esse pop
+          pilha.push(regra[2])
+        }else{
+          pilha.pop();
+          regra[2].split('')
+          regra = regra.reverse()
+          for(var j=0;j<regra.length;j++){
+            pilha.push(regra[j])
+          }
         }
       }
-      
-    }
 
-    
-    
-    
+    }
     mostraTabela2(tabela)
   });
 }
