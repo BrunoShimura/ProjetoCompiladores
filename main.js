@@ -11,7 +11,6 @@ function compilar(cod){
     percorre(linha[i],cont2);
     cont2+=1;
   }
-  console.log(cadeia)
   reconhecer(cadeia)
 
   document.getElementById("btn1").style.display = "none";
@@ -125,10 +124,6 @@ function reconhecer(vetorCadeia){
         if(vetorCadeia[0]==matriz[0][j])
           k = j
       }
-
-      console.log('===='+i+'====')
-      console.log(y)
-      console.log(matriz[y][k])
 
       //divide a regra matriz encontrada
       var regra = matriz[y][k].split(' ')
