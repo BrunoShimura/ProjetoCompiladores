@@ -1,22 +1,23 @@
 var cont = 0
 var cadeia = []
+cadeia[0] = ['']
 var pilha = ['$','E']
 //a,b,c,d,e,f,g,h,i,j
 
 function compilar(cod){
   var linha = cod.split('\n'); 
   var cont2 = 1;
-  
   for(var i = 0, len = linha.length; i < len; ++i) {
     percorre(linha[i],cont2);
     cont2+=1;
   }
-  mostraTabela(cadeia)
   reconhecer(cadeia)
+
+  document.getElementById("btn1").style.display = "none";
+  document.getElementById("line_numbers").disabled = true;
 }
 
 function percorre(linha,num){
-  cont=0
   d3.csv("data/simbolos.csv").then(function(data) {
       var palavra = linha.split(' ');
       for(var i = 0, len = palavra.length; i < len; ++i) {
@@ -27,6 +28,7 @@ function percorre(linha,num){
           }
         }
       }
+      mostraTabela(cadeia)
   });
 }
 
@@ -45,7 +47,16 @@ function mostraTabela2(tokens){
     text+= '<tr><td>'+tokens[i][0]+'</td><td>'+tokens[i][1]+'</td><td>'+tokens[i][2]+'</td></tr>'
   }
   document.getElementById("tabela2").innerHTML = text;
+  novoBotao()
 }
+function novoBotao(){
+  var text = ' <button type="button" id="btn2" class="btn btn-primary btn-block" onclick="atualizar()">Compilar novamente</button>'
+  document.getElementById("atualizar").innerHTML = text;
+}
+function atualizar(){
+  window.location.href = "index.html";
+}
+
 function reconhecer(vetorCadeia){
   d3.csv("data/tabela.csv").then(function(data) {
     var matriz = [[]];
@@ -94,49 +105,53 @@ function reconhecer(vetorCadeia){
     for(var i=0;i<cadeia.length;i++){
       vetorCadeia[i] = cadeia[i][1]
     }
-    
-    var cont = 0
+    vetorCadeia[cadeia.length]='$'
     var tabela = []
 
-    for(var i=0;i<5;i++){
-      
-
+    for(var i=0;;i++){
       //procura pilha e cadeia
       for(var j=0;j<6;j++){
         if(pilha[pilha.length-1]==matriz[j][0])
           var y = j
       }
       for(var j=0;j<10;j++){
-        if(vetorCadeia[cont]==matriz[0][j])
+        if(vetorCadeia[0]==matriz[0][j])
           var k = j
       }
-      //vetor com as informações
-      tabela[i] = [pilha.join(),vetorCadeia.join(),matriz[y][k]]
+      
       
       //divide a regra matriz encontrada
       var regra = matriz[y][k].split(' ')
       
-      //se regra igual a cadeia tida da pilha 
-      if(pilha[parseInt(pilha.length)-1]==vetorCadeia[cont]){
-        tabela[i] = [pilha.join(),vetorCadeia.join(),'--------']
-        pilha.pop();
-        vetorCadeia.shift();
-        cont+=1
-      }else{
-        // se não divide a regra e coloca na pilha
-        if(teste==vetorCadeia[cont]){
-          pilha.pop()                       //<========        //problema com esse pop
-          pilha.push(regra[2])
-        }else{
+      //vetor com as informações
+      tabela[i] = [pilha.join(''),vetorCadeia.join(''),regra.join('')]
+
+      if((pilha.length==1)&&(vetorCadeia.length==1)){
+        tabela[i] = [pilha.join(''),vetorCadeia.join(''),'sucesso 😀']
+        break
+      }
+
+      if(matriz[y][k]==''){
+        tabela[i] = [pilha.join(''),vetorCadeia.join(''),'erro 😞']
+        break
+      }
+
+      if(pilha[parseInt(pilha.length)-1]==vetorCadeia[0]){
+        tabela[i] = [pilha.join(''),vetorCadeia.join(''),'---------']
+        pilha.pop()
+        vetorCadeia.shift()
+      }
+      else{
+        if(regra[2]=='λ')
           pilha.pop();
-          regra[2].split('')
+        else{
+          pilha.pop();
           regra = regra.reverse()
-          for(var j=0;j<regra.length;j++){
+          for(var j=0;regra[j]!='->';j++){
             pilha.push(regra[j])
           }
         }
       }
-
     }
     mostraTabela2(tabela)
   });
