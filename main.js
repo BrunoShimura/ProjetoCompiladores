@@ -11,6 +11,7 @@ function compilar(cod){
     percorre(linha[i],cont2);
     cont2+=1;
   }
+  console.log(cadeia)
   reconhecer(cadeia)
 
   document.getElementById("btn1").style.display = "none";
@@ -110,16 +111,25 @@ function reconhecer(vetorCadeia){
 
     for(var i=0;;i++){
       //procura pilha e cadeia
+      var y,k = 0
+      
       for(var j=0;j<6;j++){
-        if(pilha[pilha.length-1]==matriz[j][0])
-          var y = j
+        if(pilha[pilha.length-1]==matriz[j][0]){
+          y = j
+          break
+        }else{
+          y = 0
+        }
       }
       for(var j=0;j<10;j++){
         if(vetorCadeia[0]==matriz[0][j])
-          var k = j
+          k = j
       }
-      
-      
+
+      console.log('===='+i+'====')
+      console.log(y)
+      console.log(matriz[y][k])
+
       //divide a regra matriz encontrada
       var regra = matriz[y][k].split(' ')
       
@@ -131,7 +141,7 @@ function reconhecer(vetorCadeia){
         break
       }
 
-      if(matriz[y][k]==''){
+      if(regra==''){
         tabela[i] = [pilha.join(''),vetorCadeia.join(''),'erro 😞']
         break
       }
@@ -142,8 +152,13 @@ function reconhecer(vetorCadeia){
         vetorCadeia.shift()
       }
       else{
+        if(y == 0){
+          tabela[i] = [pilha.join(''),vetorCadeia.join(''),'erro 😞']
+          break
+      }
         if(regra[2]=='λ')
           pilha.pop();
+        
         else{
           pilha.pop();
           regra = regra.reverse()
@@ -152,6 +167,7 @@ function reconhecer(vetorCadeia){
           }
         }
       }
+      
     }
     mostraTabela2(tabela)
   });
