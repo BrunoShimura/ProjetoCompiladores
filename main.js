@@ -162,7 +162,6 @@ function reconhecer(vetorCadeia){
           }
         }
       }
-      
     }
     mostraTabela2(tabela)
   });
