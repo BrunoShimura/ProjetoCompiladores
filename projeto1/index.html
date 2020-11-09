@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="jquery-linenumbers.js"></script>
+	<script>$('document').ready(function(){
+		$('#line_numbers').linenumbers({col_width:'75px'});
+  })</script>
+  <title>Compiladores</title>
+</head>
+<body>
+  <div class="jumbotron text-center">
+    <img 
+      class="img-responsive" 
+      src="https://raw.githubusercontent.com/BrunoShimura/Simplex/master/img/univem.png" 
+      width="105"
+      height="100"
+    />
+    <h1>Compiladores</h1>
+    <p>
+      Um <strong>compilador</strong> é um programa de computador (ou um grupo de programas) que, a partir de um código fonte escrito em uma linguagem compilada, </p>
+      <p>cria um programa semanticamente equivalente, porém escrito em outra linguagem, código objeto.    </p>
+  </div>
+  <div class="container p-3 my-3 border">
+    <div class="card bg-light text-dark">
+      <div class="card-body">
+        <h5 class="card-title">Linguagem</h5>
+        <select class="form-control">
+          <option>C</option>
+          <option>Java</option>
+          <option>Pyton</option>
+          <option>JavaScript</option>
+        </select>
+        <br>
+        <form name="form1">
+          <h5 class="card-title">Codigo</h5>
+          <textarea name="codigo" id="line_numbers" class="form-control" rows="20"></textarea>
+          <br>
+          <button type="button" id="btn1" class="btn btn-primary btn-block" onclick="compilar(codigo.value)">Compilar</button>
+        </form>
+      </div>
+    </div>
+    <br>
+    <div class="card bg-light text-dark">
+      <div class="card-body">
+        <h5 class="card-title">Atividade 01 - Analise Lexica</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Linha</th>
+              <th scope="col">Token</th>
+              <th scope="col">Símbolo</th>
+            </tr>
+          </thead>
+            <tbody id="tabela1">
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <div class="card bg-light text-dark">
+      <div class="card-body">
+        <h5 class="card-title">Atividade 02 - Analisador Sintático Preditivo</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Pilha</th>
+              <th scope="col">Cadeia</th>
+              <th scope="col">Regra</th>
+            </tr>
+          </thead>
+            <tbody id="tabela2">
+            </tbody>
+        </table>
+        <div id='atualizar'></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+  <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!--
+# include < stdio.h >
+main ( )
+{ 
+  int a = 0 , b = 5 ;
+  if ( b <=  10 )
+    a += 5 ;
+  printf ( “ Valores a = %d e b = %d ” , a , b ) ;
+}  
+-->
