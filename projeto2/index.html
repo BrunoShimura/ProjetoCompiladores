@@ -47,30 +47,13 @@
     <br>
     <div class="card bg-light text-dark">
       <div class="card-body">
-        <h5 class="card-title">Analise Lexica</h5>
+        <h5 class="card-title">Sistema de Execução - MELC</h5>
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Linha</th>
-              <th scope="col">Token</th>
-              <th scope="col">Símbolo</th>
-            </tr>
-          </thead>
-            <tbody id="tabela1">
-            </tbody>
-        </table>
-      </div>
-    </div>
-    <br>
-    <div class="card bg-light text-dark">
-      <div class="card-body">
-        <h5 class="card-title">Sistema de Execução</h5>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Pilha</th>
-              <th scope="col">Cadeia</th>
-              <th scope="col">Regra</th>
+              <th scope="col">Label</th>
+              <th scope="col">Comando</th>
+              <th scope="col">Variáveis</th>
             </tr>
           </thead>
             <tbody id="tabela2">
@@ -87,12 +70,44 @@
 </html>
 
 <!--
-# include < stdio.h >
-main ( )
-{ 
-  int a = 0 , b = 5 ;
-  if ( b <=  10 )
-    a += 5 ;
-  printf ( “ Valores a = %d e b = %d ” , a , b ) ;
-}  
+#include <stdio.h>
+
+main ( ) {
+  int  A , S , NUM ;
+	A = 1 ;
+	S = 0 ;
+	while (A <= 100)
+	{
+		scanf ( NUM );
+		if ( NUM > 0 ) {
+		    S = S + NUM ;
+		    A = A + 1 ; 
+    }
+    else
+      NUM - NUM ^ 2 ;
+	}
+	printf ( S , NUM );
+}
+
+================================================================================
+
+#include <stdio.h>
+
+main ( ) {
+  int N , K , F1 , F2 , F3 ;
+
+  scanf ( N ) ;
+  F1 = 0 ;   F2 = 1 ; K = 1 ;
+  while K <= N
+  {
+		F3 = F1 + F2 ;
+		F1 = F2 ;
+		F2 = F3 ;
+		K = K + 1 ;
+	}
+	printf ( N , F1 ) ;
+}
+
+
+
 -->

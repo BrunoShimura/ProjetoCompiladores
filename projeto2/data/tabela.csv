@@ -1,7 +1,0 @@
-a,b,c,d,e,f,g,h,i,j
-,id,num,+,-,*,/,(,),$
-E,E -> T S,E -> T S,,,,, E -> T S,,
-T,T -> F G,T -> F G,,,,,T -> F G,,
-S,,,S -> + T S, S -> - T S,,,,S -> λ,S -> λ
-G,,,G -> λ,G -> λ,G -> * F G,G -> / F G,,G -> λ,G -> λ
-F,F -> id,F -> num,,,,,F -> ( E ),,
